@@ -32,7 +32,7 @@ router.post('/api/users/signin', [
             email: existingUser.email
         }, process.env.JWT_KEY!);
 
-        req.session = { userJwt };
+        req.session = { jwt: userJwt };
 
         res.status(200).send(existingUser);
     }
