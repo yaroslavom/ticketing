@@ -3,8 +3,8 @@ import 'express-async-errors';
 import { json } from "body-parser";
 
 import routes from './routes';
-import { errorHandler } from './middleware/error-handler'
-import { NotFoundError } from './errors/not-found-error';
+import { errorHandler, NotFoundError  } from '@ticketing-public/common';
+
 import cookieSession from "cookie-session";
 
 

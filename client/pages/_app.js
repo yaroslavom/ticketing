@@ -1,10 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.css';
 
-const AppComponent = ({ Component, pageProps }) => {
+import Header from "../components/header";
 
+const AppComponent = ({ Component }) => {
     return (
         <>
-            <Component {...pageProps} />
+            <Header />
+            <Component />
         </>
     );
 };
