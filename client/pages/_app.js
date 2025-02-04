@@ -2,11 +2,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import Header from "../components/header";
 
-const AppComponent = ({ Component }) => {
+const AppComponent = ({ Component, pageProps }) => {
     return (
         <>
             <Header />
-            <Component />
+            <Component {...pageProps} />
         </>
     );
 };

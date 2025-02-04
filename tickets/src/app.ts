@@ -3,7 +3,7 @@ import 'express-async-errors';
 import { json } from "body-parser";
 import cookieSession from "cookie-session";
 
-import { errorHandler, NotFoundError, currentUser  } from '@ticketing-public/common';
+import { NotFoundError, errorHandler, currentUser } from '@ticketing-public/common';
 
 import routes from './routes';
 
@@ -16,10 +16,10 @@ app.use(cookieSession({
 }));
 app.use(currentUser);
 
-app.use(routes.currentUser);
-app.use(routes.signin);
-app.use(routes.signout);
-app.use(routes.signup);
+app.use(routes.createTicket);
+app.use(routes.showTicket);
+app.use(routes.tickets);
+app.use(routes.updateTicket);
 
 app.all('*', async (req, res) => { 
     throw new NotFoundError();
