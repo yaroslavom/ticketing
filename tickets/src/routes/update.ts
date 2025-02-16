@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import { body } from 'express-validator';
 
-import { NotFoundError, NotAuthorizedError, validateRequest, requireAuth } from '@ticketing-public/common';
+import { NotFoundError, NotAuthorizedError, validateRequest, requireAuth, BadRequestError } from '@ticketing-public/common';
 
 import Ticket from '../models/ticket';
 import { TicketUpdatedPublisher } from '../events/publisher/ticket-updated-publisher';
@@ -24,6 +24,10 @@ router.put('/api/tickets/:id', requireAuth, [
             throw new NotFoundError();
         }
 
+        if (ticket.orderId) {
+            throw new BadRequestError('Cannot edit a reserved ticket');
+        }
+
         if (ticket.userId !== req.currentUser!.id) {
             throw new NotAuthorizedError()
         }
@@ -38,7 +42,8 @@ router.put('/api/tickets/:id', requireAuth, [
             id: ticketId,
             title: ticket.title,
             price: ticket.price,
-            userId: ticket.userId
+            userId: ticket.userId,
+            version: ticket.version
         })
 
         res.send(ticket);
