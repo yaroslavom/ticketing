@@ -10,7 +10,7 @@ import { OrderCreatedPublisher } from "../events/publisher/order-created-publish
 
 const router = express.Router();
 
-const EXPIRATION_WINDOW_SECONDS = 15 * 60;
+const EXPIRATION_WINDOW_SECONDS = 1 * 60; // FIXME: Temporary for testing purpose;
 
 router.post('/api/orders', requireAuth, [
         body('ticketId').not().isEmpty().isMongoId().withMessage('Ticket Id must be provided')
