@@ -1,8 +1,9 @@
+"use client"
 import React, { useState, useCallback } from 'react';
 import Router from 'next/router';
 
-import ErrorList from '../../components/error-list';
-import useRequest from '../../hook/use-request';
+import ErrorList from '../../../components/error-list';
+import useRequest from '../../../hook/use-request';
 
 const SignIn = () => {
     const [email, setEmail] = useState('');

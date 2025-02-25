@@ -1,7 +1,8 @@
+"use client"
 import React, { useEffect } from 'react';
 import Router from 'next/router';
 
-import useRequest from '../../hook/use-request';
+import useRequest from '../../../hook/use-request';
 
 const SignOut = () => {
     const { doRequest } = useRequest({
